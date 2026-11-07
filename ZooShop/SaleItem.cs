@@ -9,46 +9,52 @@ namespace ZooShop
     public class SaleItem
     {
         private int id;
-        private string name;
+        private Product? product;
+        private Animal? animal;
         private int quantity;
-        private float price;
-        private float discount;
-        private SaleItem(int id, string name,  int quantity, float price, float discount)
+        private decimal price;
+        private decimal discount;
+        private SaleItem(int id,Product? product,Animal? animal,int quantity,decimal price, decimal discount)
         {
             this.id = id;
-            this.name = name;
+            this.product = product;
+            this.animal = animal;
             this.quantity = quantity;
             this.price = price;
             this.discount = discount;
         }
-        public static SaleItem CreateSaleItem(int id, string name, int quantity, float price, float discount)
+        public static SaleItem CreateProductSale(int id, Product product, int quantity, decimal price, decimal discount)
         {
-            return new SaleItem(id, name, quantity, price, discount);
+            return new SaleItem(id, product,null, quantity, price, discount);
+        }
+        public static SaleItem CreateAnimalSale(int id, Animal animal, int quantity, decimal price, decimal discount)
+        {
+            return new SaleItem(id, null, animal, quantity, price, discount);
         }
         public int Id
         {
             get { return id; }
             set { id = value; }
         }
-        public string Name
-        {
-            get { return name; }
-            set { if (!string.IsNullOrEmpty(value)) { name = value; } }
-        }
         public int Quantity
         {
             get { return quantity; }
             set { quantity = value; }
         }
-        public float Price
+        public decimal Price
         {
             get { return price; }
             set { price = value; }
         }
-        public float Discount
+        public decimal Discount
         {
             get { return discount; }
             set { discount = value; }
         }
+        public Salable Salable
+        {
+            get { if (product is not null) { return product; } else { return animal; } }
+        }
+        
     }
 }

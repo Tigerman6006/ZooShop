@@ -6,16 +6,13 @@ using System.Threading.Tasks;
 
 namespace ZooShop
 {
-    public class Product
+    public class Product:Salable
     {
         private int productCode;
-        private string name;
-        private float purchasePrice;
-        private float sellingPrice;
         private DateTime expirationDate;
         private StockNorm stockNorm;
         private StorageConditions storageConditions; 
-        private Product(int productCode, string name, float purchasePrice, float sellingPrice, DateTime expirationDate, StockNorm stockNorm, StorageConditions storageConditions)
+        private Product(int productCode, string name, decimal purchasePrice, decimal sellingPrice, DateTime expirationDate, StockNorm stockNorm, StorageConditions storageConditions)
         {
             this.productCode = productCode;
             this.name = name;
@@ -25,7 +22,7 @@ namespace ZooShop
             this.stockNorm = stockNorm;
             this.storageConditions = storageConditions;
         }
-        public static Product CreateProduct(int productCode, string name, float purchasePrice, float sellingPrice, StockNorm stockNorm, StorageConditions storageConditions)
+        public static Product CreateProduct(int productCode, string name, decimal purchasePrice, decimal sellingPrice, StockNorm stockNorm, StorageConditions storageConditions)
         {
             return new Product(productCode, name, purchasePrice, sellingPrice, DateTime.Now, stockNorm, storageConditions);
         }
@@ -33,26 +30,6 @@ namespace ZooShop
         {
             get { return productCode; }
             set { productCode = value; }
-        }
-        public string Name
-        {
-            get{ return name; }
-            set {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    name = value;
-                }
-            }
-        }
-        public float PurchasePrice
-        {
-            get { return purchasePrice; }
-            set { purchasePrice = value; }
-        }
-        public float SellingPrice
-        {
-            get { return sellingPrice; }
-            set { sellingPrice = value; }
         }
         public DateTime ExpirationDate
         {
