@@ -18,7 +18,6 @@ namespace ZooShop
         {
             var services = new ServiceCollection();
 
-            // Справочники
             services.AddScoped<
                 IProductCategoryRepository,
                 ProductCategoryRepositoryStub>();
@@ -27,7 +26,6 @@ namespace ZooShop
                 ISupplierRepository,
                 SupplierRepositoryStub>();
 
-            // Каталог
             services.AddScoped<
                 IProductRepository,
                 ProductRepositoryStub>();
@@ -36,7 +34,6 @@ namespace ZooShop
                 IAnimalRepository,
                 AnimalRepositoryStub>();
 
-            // Складские операции
             services.AddScoped<
                 IProductBatchRepository,
                 ProductBatchRepositoryStub>();
@@ -45,7 +42,6 @@ namespace ZooShop
                 IReplenishmentRequestRepository,
                 ReplenishmentRequestRepositoryStub>();
 
-            // Продажи
             services.AddScoped<
                 ISaleRepository,
                 SaleRepositoryStub>();
@@ -53,6 +49,8 @@ namespace ZooShop
             services.AddScoped<
                 ISaleItemRepository,
                 SaleItemRepositoryStub>();
+
+            services.AddTransient<MainForm>();
 
             return services.BuildServiceProvider();
         }

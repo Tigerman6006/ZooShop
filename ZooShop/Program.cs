@@ -4,17 +4,19 @@ namespace ZooShop
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
             ApplicationConfiguration.Initialize();
 
-            var serviceProvider = DependencyInjection.ConfigureServices();
+            using var serviceProvider =
+                DependencyInjection.ConfigureServices();
 
-            Application.Run(serviceProvider.GetRequiredService<Form1>());
+            using var scope = serviceProvider.CreateScope();
+
+            Application.Run(
+                scope.ServiceProvider.GetRequiredService<MainForm>()
+            );
         }
     }
 }
