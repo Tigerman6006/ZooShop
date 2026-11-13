@@ -9,29 +9,29 @@ namespace ZooShop.Entities
 {
     public class StorageConditions
     {
-        private int temperature;
-        private int humidity;
+        private double temperature;
+        private double humidity;
         private SpecialRequirements specialRequirements;
-        private StorageConditions(int temperature, int humidity, SpecialRequirements specialRequirements)
+        private StorageConditions(double temperature, double humidity, SpecialRequirements specialRequirements)
         {
             this.temperature = temperature;
             this.humidity = humidity;
             this.specialRequirements = specialRequirements;
         }
-        public static StorageConditions CreateBaseConditions(int temperature, int humidity)
+        public static StorageConditions CreateConditions(double temperature, double humidity)
         {
             return new StorageConditions(temperature, humidity, SpecialRequirements.None);
         }
-        public static StorageConditions CreateAdvancedConditions(int temperature, int humidity, SpecialRequirements specialRequirements)
+        public static StorageConditions CreateConditions(double temperature, double humidity, SpecialRequirements specialRequirements)
         {
             return new StorageConditions(temperature, humidity, specialRequirements);
         }
-        public int Temperature
+        public double Temperature
         {
             get { return temperature; }
             set { temperature = value; }
         }
-        public int Humidity
+        public double Humidity
         {
             get => humidity;
             set { humidity = value; }

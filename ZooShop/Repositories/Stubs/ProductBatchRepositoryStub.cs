@@ -21,6 +21,8 @@ namespace ZooShop.Repositories.Stubs
 
         public void Add(ProductBatch batch)
             => throw new NotImplementedException();
+        public void Update(ProductBatch batch)
+            => throw new NotImplementedException();
     }
 
 }

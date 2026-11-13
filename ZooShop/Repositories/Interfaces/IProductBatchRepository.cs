@@ -11,5 +11,6 @@ namespace ZooShop.Repositories.Interfaces
     {
         IEnumerable<ProductBatch> GetByProduct(int productCode);
         void Add(ProductBatch batch);
+        void Update(ProductBatch batch);
     }
 }

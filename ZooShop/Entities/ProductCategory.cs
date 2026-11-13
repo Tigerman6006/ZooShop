@@ -11,18 +11,17 @@ namespace ZooShop.Entities
     {
         private int categoryCode;
         private string categoryName;
-        private List<Product> products;
-        private ProductCategory(int Code, string Name, List<Product> products)
+        private List<Product>? products;
+        private ProductCategory(int Code, string Name)
         {
             categoryCode = Code;
             categoryName = Name;
-            this.products = products;
         }
-
-        public static ProductCategory CreateCategory(int Code, string Name, List<Product> products)
+        public static ProductCategory CreateCategory(int Code, string Name)
         {
-            return new ProductCategory(Code, Name, products);
+            return new ProductCategory(Code, Name);
         }
+        
         public int CategoryCode { 
             get { return categoryCode; } 
             set { categoryCode = value; } 
@@ -37,7 +36,7 @@ namespace ZooShop.Entities
                 }
             }
         }
-        public List<Product> Products
+        public List<Product>? Products
         {
             get { return products; }
             set {if(value != null) { products = value; } }

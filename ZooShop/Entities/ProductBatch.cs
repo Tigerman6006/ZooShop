@@ -26,14 +26,14 @@ namespace ZooShop.Entities
             this.products = products;
             this.supplier = supplier;
         }
-        public static ProductBatch CreateBatch(int batchNumber, DateTime arrivalDate, DateTime expirationDate, int quantityReceived, int remainingQuantity, Product products, Supplier? supplier)
+        public static ProductBatch CreateBatch(int batchNumber, DateTime arrivalDate, DateTime expirationDate, int quantityReceived, Product products, Supplier? supplier)
         {
             ProductBatch batch = new ProductBatch(
                 batchNumber,
                 arrivalDate,
                 expirationDate,
                 quantityReceived,
-                remainingQuantity,
+                quantityReceived,
                 products,
                 supplier);
 
