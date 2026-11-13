@@ -4,32 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZooShop
+namespace ZooShop.Entities
 {
     public class SaleItem
     {
         private int id;
-        private Product? product;
-        private Animal? animal;
+        private Salable salable;
+        private Sale sale;
         private int quantity;
         private decimal price;
         private decimal discount;
-        private SaleItem(int id,Product? product,Animal? animal,int quantity,decimal price, decimal discount)
+        private SaleItem(int id,Salable salable, Sale sale, int quantity,decimal price, decimal discount)
         {
             this.id = id;
-            this.product = product;
-            this.animal = animal;
+            this.salable = salable;
+            this.sale = sale;
             this.quantity = quantity;
             this.price = price;
             this.discount = discount;
         }
-        public static SaleItem CreateProductSale(int id, Product product, int quantity, decimal price, decimal discount)
+        public static SaleItem CreateSaleItem(int id, Salable salable, Sale sale, int quantity, decimal price, decimal discount)
         {
-            return new SaleItem(id, product,null, quantity, price, discount);
-        }
-        public static SaleItem CreateAnimalSale(int id, Animal animal, int quantity, decimal price, decimal discount)
-        {
-            return new SaleItem(id, null, animal, quantity, price, discount);
+            return new SaleItem(id, salable, sale, quantity, price, discount);
         }
         public int Id
         {
@@ -53,8 +49,14 @@ namespace ZooShop
         }
         public Salable Salable
         {
-            get { if (product is not null) { return product; } else { return animal; } }
+            get{ return salable; }
+            set { if (value is not null) { salable = value; } }
         }
-        
+        public Sale Sale
+        {
+            get { return sale; }
+            set { sale = value; }
+        }
+
     }
 }

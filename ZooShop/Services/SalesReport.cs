@@ -4,8 +4,9 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZooShop.Entities;
 
-namespace ZooShop
+namespace ZooShop.Services
 {
     public class SalesReport
     {

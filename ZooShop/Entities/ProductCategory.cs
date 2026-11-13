@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace ZooShop
+namespace ZooShop.Entities
 {
     public class ProductCategory
     {
@@ -14,8 +14,8 @@ namespace ZooShop
         private List<Product> products;
         private ProductCategory(int Code, string Name, List<Product> products)
         {
-            this.categoryCode = Code;
-            this.categoryName = Name;
+            categoryCode = Code;
+            categoryName = Name;
             this.products = products;
         }
 

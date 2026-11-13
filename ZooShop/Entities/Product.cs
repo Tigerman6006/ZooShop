@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZooShop
+namespace ZooShop.Entities
 {
     public class Product:Salable
     {
@@ -54,7 +54,7 @@ namespace ZooShop
         public int CalculateRemainingStock()
         {
             return ProductBatch.GetAllBatches()
-                .Where(batch => batch.Products.ProductCode == this.ProductCode)
+                .Where(batch => batch.Products.ProductCode == ProductCode)
                 .Sum(batch => batch.RemainingQuantity);
         }
         public bool RequiresReplenishment()
